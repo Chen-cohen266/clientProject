@@ -1,0 +1,14 @@
+<div class="external" style="position: fixed">
+  <div class="internal" #btn (click)="menu.toggle($event)">
+      <i class="pi pi-bars" style="font-size: 40pt"></i>
+  </div>
+  <div style="float:unset" >
+    <p-tieredMenu  #menu [model]="items" [popup]="true"></p-tieredMenu>
+  </div>
+</div>
+<br/>
+
+<div style="margin-top:200px">
+  <router-outlet></router-outlet>
+</div>
+

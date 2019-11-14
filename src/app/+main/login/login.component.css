@@ -1,0 +1,91 @@
+.width{
+   height:40px;
+   /* border: 1px solid black; */
+   border-radius: 12px; 
+}
+.ui-toast-detail {
+    white-space: pre-line;
+ }
+ .newUserLoc{
+    top:70%;
+    /* margin-left: 40%; */
+    width:20%;
+    margin-top: 7%;
+    margin: auto;
+    display: block;
+ }
+
+ @media (max-width:2000px){
+    .center{
+        width: 20%;
+        height: 35%;
+        min-width: 250px;
+        margin-left: 37%;
+        /* border: 1px solid #ccc; */
+        padding: 20px;
+        margin: auto;
+        display: block;
+        margin-top: 500px;
+    }
+    .loginBtn{
+        background-color: #ffffff;
+        border: #ffffff;
+        color: #ffffff;
+        width: 200px;
+    }
+ }
+ @media (max-width:880px){
+    .center{
+        width: 40%;
+        height: 35%;
+        margin-top: 400px;
+        margin-left: 30%;
+        /* border: 1px solid #ccc; */
+        padding: 20px;
+    }
+    .newUserLoc{
+        margin-left: 25%;
+        width: 20%;
+        margin-top: -2%;
+        margin: auto;
+        display: block;
+     }
+    
+ }
+ @media (max-width:375px){
+    .center{
+        width: 80%;
+        height: 35%;
+        margin-top: 400px;
+        margin-left: 10%;
+        /* border: 1px solid #ccc; */
+        padding: 20px;
+    }
+    .newUserLoc{
+        margin-left: 25%;
+        width: 110px;
+        margin-top: -2%;
+        margin: auto;
+        display: block;
+     }
+ }
+ input{
+     background-color: transparent;
+     border: 2px solid rgb(216, 68, 68);
+ }
+ .inputLbl{
+     color: rgb(216, 68, 68);
+ }
+ .loginBtn{
+     background-color:rgb (216, 68, 68);
+     border: rgb(216, 68, 68);
+     /* color: #ffffff; */
+     height: 30px;
+ }
+ .addBtn{
+     background-color: transparent;
+     border: 2px solidrgb(216, 68, 68);
+     border-radius: 12px;
+ }
+ 
+

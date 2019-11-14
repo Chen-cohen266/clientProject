@@ -1,0 +1,40 @@
+
+<form novalidate [formGroup]="loginForm" class="center">
+    <div [ngClass]="{'ui-float-label':flagEmail}" class="form-group" >
+      <input #emailInput [(ngModel)]="emailValue" (change)="changeText(emailInput)" aria-describedby="emailHelp" class="width form-control" id="emailId" type="email" size="30"  formControlName="email"
+      [ngClass]="{'is-valid':loginForm.controls.email.valid && loginForm.controls.email.dirty,
+           'is-invalid':loginForm.controls.email.invalid && loginForm.controls.email.dirty}" > 
+      <label *ngIf="flagEmail" class="inputLbl">Email</label>
+    <small class="form-text text-muted" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.dirty && emailInput.value!=''" class="text-danger">
+        Must be valid email address.
+    </small>
+    <small class="form-text text-muted" *ngIf="loginForm.controls.email.dirty && emailInput.value==''" class="text-danger">
+        Required.
+    </small>
+    </div>
+
+  <div [ngClass]="{'ui-float-label':flagPassword}" class="form-group">
+    <input [(ngModel)]="passwordValue" #passwordInput (change)="changeText(passwordInput)" class="width form-control" id="passwordId" type="password" size="30" formControlName="password"
+     [ngClass]="{'is-valid':loginForm.controls.password.valid && loginForm.controls.password.dirty,
+          'is-invalid':loginForm.controls.password.invalid && loginForm.controls.password.dirty}"> 
+    <label *ngIf="flagPassword" class="inputLbl">Password</label>
+    <small class="form-text text-muted" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty && passwordInput.value!=''" class="text-danger">
+        Must include 6-12 characters.
+    </small>
+    <small class="form-text text-muted" *ngIf="loginForm.controls.password.dirty && passwordInput.value==''" class="text-danger">
+        Required.
+    </small>
+    </div>
+    <div style="text-align: center">
+    <button (click)="submit()" class="btn btn-outline-secondary" type="submit" value="login">
+        Login
+        <i class="fas fa-lock-open"></i>
+    </button>
+</div>
+</form>
+<button class="btn btn-outline-secondary newUserLoc inputLbl" (click)="navToUser()">
+    New User
+    <i class="pi pi-user-plus"></i>
+</button>
+<p-toast [style]="{marginTop: '20%'}" position="top-center"></p-toast>
+

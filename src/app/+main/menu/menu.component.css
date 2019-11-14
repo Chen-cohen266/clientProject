@@ -1,0 +1,24 @@
+.internal{
+    display: inline-block;
+}
+.external{
+    padding-left: 2%;
+    padding-top: 1%;
+    border-bottom: 2px;
+    /* border-bottom-style: solid; */
+    height: 40px;
+    z-index: 200;
+}
+i{
+    font-size: 25px;
+    color:  rgb(216, 68, 68);
+}
+.icon{
+    color:  rgb(216, 68, 68);   
+}
+.front{
+    /* position: absolute;
+    left: 0px;
+    top: 0px; */
+    z-index: 50000;
+}

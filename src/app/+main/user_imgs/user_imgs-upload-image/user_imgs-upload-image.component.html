@@ -1,0 +1,55 @@
+<p-blockUI [blocked]="blockedDocument"></p-blockUI>
+<div  [ngClass]="{'center':status=='addImage'|| status=='uploadImage'}">
+    <div style="padding-left: 5%">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text " id="firstNameHelp"><i class="far fa-image"></i></span>
+            </div>
+        </div>
+        <input #imageInput type="file" accept="image/*" (change)="preview(imageInput.files)" />
+        <br><br>
+        <!--התחברות למצלימה
+             <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text " id="firstNameHelp"><i class="fas fa-camera"></i></span>
+            </div>
+        </div>
+        <input #file2 type="file" accept="image/*" capture="camera" (change)="preview(file2.files)" />
+        <br><br> -->
+<div *ngIf="isWorking" style="text-align: center">   
+<p-progressSpinner></p-progressSpinner>
+</div> 
+    </div>
+    <img class="image img-fluid" alt="Responsive image" [src]="imgURL" *ngIf="imgURL"><br>
+    <small style="color:red;" *ngIf="message">{{message}}</small>
+    <small class="form-text text-muted" *ngIf="req()" class="text-danger">
+        Required.
+    </small>
+
+    <button type="submit" [disabled]="imagePath==null" *ngIf="status=='addImage'|| status=='uploadImage'" (click)="submit()"
+        class="btncenter btn btn-success">
+        <span *ngIf="status=='addImage'">Add Image</span>
+        <span *ngIf="status=='uploadImage'">Upload Image</span>
+    </button>
+</div>
+
+<p-toast [style]="{marginTop: '20%'}" position="top-center"></p-toast>
+<p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center;padding-left: 20%;padding-right: 20% ">
+            <br/>
+            <h5>{{message.summary}}</h5>
+            <p>{{message.detail}}</p>
+            <app-list-send [emails]="emails" class="centerList" (selectEvent)="choseUserList($event)"></app-list-send>
+            <br/>
+        </div>
+        <div class="ui-g ui-fluid" >
+            <div class="ui-g-6">
+                <button type="button" pButton (click)="onSendEmail()" label="Yes" class="btn btn-success locate"></button>
+            </div>
+            <div class="ui-g-6">
+                <button type="button" pButton (click)="onReject()" label="No" class="btn btn-light locate"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>

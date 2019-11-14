@@ -1,0 +1,35 @@
+<!-- <div class="style_featured"> -->
+<div class="center">
+    <div class="radio">
+      <label pInputText pTooltip="If you choose to improve performance,
+      The system will work faster,and it may not recognize all the faces in the picture." tooltipPosition="bottom">
+      <div class="ui-g-12"><p-checkbox [(ngModel)]="CkbVal" value="performance" name="Ckb" label="Improve performance"></p-checkbox></div></label>
+    </div>
+    <div class="radio">
+      <label  pInputText pTooltip="If you choose to improve reliability,
+      The system will require a confirmation to send the image for each identified." tooltipPosition="bottom">
+      <div class="ui-g-12"><p-checkbox [(ngModel)]="CkbVal" value="reliability" name="Ckb" label="Improve reliability &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></p-checkbox></div></label>
+    </div>
+    <br/>
+    <button type="button" pButton (click)="showConfirm()" label="Confirm" class="btn btn-primary locate">Save configuration</button>
+</div>
+<!-- </div> -->
+<p-toast [style]="{marginTop: '40%'}" position="top-center"></p-toast>
+<p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+            <h5>{{message.summary}}</h5>
+            <p>{{message.detail}}</p>
+        </div>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-6">
+                <button type="button" pButton (click)="onConfirm()" label="Yes" class="btn btn-success locate">Yes</button>
+            </div>
+            <div class="ui-g-6">
+                <button type="button" pButton (click)="onReject()" label="No" class="btn btn-light locate">No</button>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+

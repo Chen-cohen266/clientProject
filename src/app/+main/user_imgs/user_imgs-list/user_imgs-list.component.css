@@ -1,0 +1,26 @@
+/* .style_featured { 
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: 0.5s; 
+}
+
+.style_featured > div:hover {
+    margin-top: +19px;
+    box-shadow: rgba(0, 0, 0, 0.1) 9px 9px 9px 9px;
+    background: rgba(153, 200, 250, 0.1);
+    transition: 0.99s;
+} */
+
+.sample-layout > div {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-radius: 4px;
+    width: 80%;
+    margin-left: 10%;
+    border: 1px solid #ccc;
+}
+
+.sample-layout {
+    margin: 0;
+}

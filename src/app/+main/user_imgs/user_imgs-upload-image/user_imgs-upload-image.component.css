@@ -1,0 +1,57 @@
+.image{
+    border: 1px black groove;
+    border-radius: 5px;
+    margin: auto;
+    display: block;
+    height: 200px;
+}
+.center{
+    margin-left: 10%;
+    border: 1px solid #ccc;
+    padding: 20px 5px;
+    width: 80%;
+}
+.btncenter{
+    margin: auto;
+    display: block;
+}
+.centerList{
+    margin: auto;
+}
+/* .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input {
+    float:left;
+  }
+  .custom-file-input:hover::before {
+    border-color: black;
+  }
+  .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  } */
+
+  :host>>>.ui-toast .ui-toast-message.ui-toast-message-info{
+      background-image: url('/assets/images/list-send-bg.png')
+  }
+  :host>>>.ui-button.ui-button-text-only .ui-button-text{
+      background-color: white;
+      color: #007AD9;
+      border: #007AD9;
+  }
+  @keyframes ui-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+    40% {
+        stroke: #0057e7;
+    }
+    66% {
+        stroke: #008744;
+    }
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
+}

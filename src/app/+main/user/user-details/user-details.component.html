@@ -1,0 +1,155 @@
+<div id="uDetails">
+<form id="form" novalidate [formGroup]="userForm" class="center">
+  <div class="form-group" >
+    <label for="inputFirstName">First Name</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend" >
+          <span class="input-group-text " id="firstNameHelp" style="background-color: rgb(216, 68, 68)"><i class="fas fa-user" style="color:snow"></i></span>
+        </div>
+        <input #inputFirstName type="text" [(ngModel)]="firstNameValue" [readonly]="status=='details'" class="form-control" id="inputFirstName" aria-describedby="firstNameHelp" placeholder="Enter First Name" formControlName="firstName"
+        [ngClass]="{'is-valid':userForm.controls.firstName.valid && userForm.controls.firstName.dirty,
+          'is-invalid':userForm.controls.firstName.invalid && userForm.controls.firstName.dirty}">
+    </div>
+    <small class="form-text text-muted" *ngIf="userForm.controls.firstName.invalid && userForm.controls.firstName.dirty && inputFirstName.value!=''" class="text-danger">
+        Must contain only Alpha-beit characters.
+    </small>
+    <small class="form-text text-muted" *ngIf="userForm.controls.firstName.dirty && inputFirstName.value==''" class="text-danger">
+        Required.
+    </small>
+  </div>
+
+  <div class="form-group">
+      <label for="inputLastName">Last Name</label>
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text " id="lastNameHelp"  style="background-color: rgb(216, 68, 68)"><i class="fas fa-user" style="color:snow"></i></span>
+          </div>
+      <input #inputLastName type="email" [(ngModel)]="lastNameValue" class="form-control" [readonly]="status=='details'" id="inputLastName" aria-describedby="lastNameHelp" placeholder="Enter Last Name" formControlName="lastName"
+      [ngClass]="{'is-valid':userForm.controls.lastName.valid && userForm.controls.lastName.dirty,
+        'is-invalid':userForm.controls.lastName.invalid && userForm.controls.lastName.dirty}">
+      </div>
+      <small class="form-text text-muted" *ngIf="userForm.controls.lastName.invalid && userForm.controls.lastName.dirty && inputLastName.value!=''" class="text-danger">
+          Must contain only Alpha-beit characters.
+      </small>
+      <small class="form-text text-muted" *ngIf="userForm.controls.lastName.dirty && inputLastName.value==''" class="text-danger">
+          Required.
+      </small>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmailOrWhatsApp">Send Image To :</label>
+    <div class="radio">
+      <label><input type="radio" name="options" [disabled]="status=='details'" (focus)="checkedAnother()" checked>Email</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="options" [disabled]="status=='details'" (focus)="checkedWhatsApp()">WhatsApp</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="options" [disabled]="status=='details'" (focus)="checkedWhatsApp()">Both</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail">Email address</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text " id="emailHelp" style="background-color: rgb(216, 68, 68)"><i class="fas fa-at" style="color:snow"></i></span>
+        </div>
+    <input #inputEmail type="email" [(ngModel)]="emailValue" [readonly]="status=='details'" class="form-control" id="inputEmail" placeholder="Enter email" formControlName="email"
+    [ngClass]="{'is-valid':userForm.controls.email.valid && userForm.controls.email.dirty,
+      'is-invalid':userForm.controls.email.invalid && userForm.controls.email.dirty}">
+    </div>
+    <small class="form-text text-muted" *ngIf="userForm.controls.email.invalid && userForm.controls.email.dirty && inputEmail.value!=''" class="text-danger">
+        Must be valid email address.
+    </small>
+    <small class="form-text text-muted" *ngIf="userForm.controls.email.dirty && inputEmail.value==''" class="text-danger">
+        Required.
+    </small>
+  </div>
+
+  <div class="form-group" *ngIf="whatAppFlag">
+    <label for="inputWhatsApp">WhatsApp</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text " id="whatsAppHelp" style="background-color: rgb(216, 68, 68)"><i class="fab fa-whatsapp" style="color:snow"></i></span>
+      </div>
+    <input #inputWhatsApp type="tel" [(ngModel)]="whatsAppValue" [readonly]="status=='details'" class="form-control" id="inputWhatsApp" placeholder="Enter WhatsApp" formControlName="whatsApp"
+    [ngClass]="{'is-valid':userForm.controls.whatsApp.valid && userForm.controls.whatsApp.dirty,
+      'is-invalid':userForm.controls.whatsApp.invalid && userForm.controls.whatsApp.dirty}">
+    </div>
+    <small class="form-text text-muted" *ngIf="userForm.controls.whatsApp.invalid && userForm.controls.whatsApp.dirty && inputWhatsApp.value!=''" class="text-danger">
+        Must be valid whatsApp number.
+    </small>
+    <small class="form-text text-muted" *ngIf="userForm.controls.whatsApp.dirty && inputWhatsApp.value==''" class="text-danger">
+        Required.
+    </small>
+  </div>
+  
+  <div class="form-group" *ngIf="status=='newUser'">
+    <label for="inputPassword">Password</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text " id="passwordHelp" style="background-color: rgb(216, 68, 68)" ><i class="fa fa-eye" style="color:snow" (mouseover)="changeType()" (mouseleave)="changeType()"></i></span>
+      </div>
+      <input #inputPassword type={{typePass}} [(ngModel)]="passwordValue" (change)="checkPassword()" class="form-control" id="passwordHelp" placeholder="Password" formControlName="password"
+      [ngClass]="{'is-valid':userForm.controls.password.valid && userForm.controls.password.dirty,
+        'is-invalid':userForm.controls.password.invalid && userForm.controls.password.dirty}">
+    </div>
+    <small class="form-text text-muted" *ngIf="userForm.controls.password.invalid && userForm.controls.password.dirty && inputPassword.value!=''" class="text-danger">
+        Must include 6-12 characters.
+    </small>
+    <small class="form-text text-muted" *ngIf="userForm.controls.password.dirty && inputPassword.value==''" class="text-danger">
+        Required.
+    </small>
+  </div>
+
+  <div class="form-group" *ngIf="status=='newUser'">
+    <label for="inputConfirmPassword">Confirm Password</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text " id="confirmPasswordHelp" style="background-color: rgb(216, 68, 68)"><i class="fa fa-eye" style="color:snow" (mouseover)="changeType()" (mouseleave)="changeType()"></i></span>
+      </div>
+      <input #inputConfirmPassword type={{typePass}} [readonly]="status=='details'" [disabled]="isDisable" class="form-control" id="confirmPasswordHelp" placeholder="Confirm Password" formControlName="confirmPassword"
+      [ngClass]="{'is-valid':userForm.controls.confirmPassword.valid && userForm.controls.confirmPassword.dirty || !matchingConfirmPasswords() && userForm.controls.confirmPassword.dirty,
+        'is-invalid':userForm.controls.confirmPassword.invalid && userForm.controls.confirmPassword.dirty || matchingConfirmPasswords() && userForm.controls.confirmPassword.dirty}">
+    </div>
+    <small class="form-text text-muted" *ngIf="matchingConfirmPasswords() && inputConfirmPassword.value!=''" class="text-danger">
+        Must be mutch to the password.
+    </small>
+    <small class="form-text text-muted" *ngIf="userForm.controls.confirmPassword.dirty && inputConfirmPassword.value==''" class="text-danger">
+        Required.
+    </small>
+  </div>
+  
+  <div class="form-group" *ngIf="status=='newUser'">
+    <label for="inputImage">Add Image</label><br/>
+    <small>You may want to enter a clear image</small>
+    <app-upload-image (upload)="addImg($event)"></app-upload-image>
+  </div>
+  <div *ngIf="status=='details'">
+    <button class="linkToList btn btn-link" (click)="showImageList()">Show images list</button><br/>
+  </div>
+  <button *ngIf="status!='details'" type="button" pButton (click)="showConfirm()" label="Confirm" class="ui-button-warning btn btn-primary locate">Submit</button>
+  <!-- <button *ngIf="status=='newUser'" type="submit" class="btn btn-primary locate" (click)="submit()">Submit</button> -->
+</form>
+</div>
+<p-blockUI [blocked]="blockedDocument"></p-blockUI>
+<p-toast [style]="{marginTop: '20%'}" position="top-center"></p-toast>
+
+<p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+      <div style="text-align: center">
+          <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+          <h3>{{message.summary}}</h3>
+          <p>{{message.detail}}</p>
+      </div>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-6">
+              <button type="button" pButton (click)="onConfirm()" label="Yes" class="btn btn-success locate">Yes</button>
+          </div>
+          <div class="ui-g-6">
+              <button type="button" pButton (click)="onReject()" label="No" class="btn btn-light locate">No</button>
+          </div>
+      </div>
+  </ng-template>
+</p-toast>

@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+.bg{
+    background-image: url('/assets/images/loginBg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%; 
+    bottom: 0px;
+    background-position-y:inherit;
+    /* background-size: cover; */
+ }
+ .bg_home{
+    background-image: url('/assets/images/homeBg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%; 
+    bottom: 0px;
+    background-position-y:inherit;
+    background-size: cover;
+ }
+ .bg_global{
+    background-image: url('/assets/images/globalBg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%; 
+    bottom: 0px;
+    background-position-y:inherit;
+    /* background-size: cover; */
+ }
+ @media (max-width:880px){
+    .bg_home{
+        background-image: url('/assets/images/globalBg.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%; 
+        bottom: 0px;
+        background-position-y:inherit;
+        /* background-size: cover; */
+     }
+ }

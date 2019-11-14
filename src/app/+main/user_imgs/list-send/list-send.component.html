@@ -1,0 +1,6 @@
+<p-listbox [options]="emails" (click)="invokeEvent()" [(ngModel)]="selectedEmails" [listStyle]="{'max-height':'250px'}" multiple="multiple" checkbox="checkbox" filter="filter" optionLabel="email_address">
+  <p-header>
+    <i class="fas fa-mail-bulk"></i>
+    Email-Send
+  </p-header>
+</p-listbox>
